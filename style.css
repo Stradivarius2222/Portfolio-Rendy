@@ -1,334 +1,325 @@
-@import url('https:/fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap');
+/* General Styling */
+:root {
+    --primary-color: #007bff; /* Warna biru keren */
+    --secondary-color: #f8f9fa; /* Warna latar belakang terang */
+    --dark-color: #343a40; /* Warna teks gelap */
+    --font-family: 'Arial', sans-serif;
+}
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  overflow-x: hidden;
-  background-color: #0b0c10;
-  position: relative;
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: white;
+    scroll-behavior: smooth;
 }
 
-canvas#bgCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.navbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  padding: 2rem 4rem;
-  background: transparent;
-  z-index: 10;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  font-family: 'Playfair Display', serif;
-}
-
-.nav-links li a,
-.nav-links li button {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.nav-links li a:hover,
-.nav-links li button:hover {
-  color: #ffd369;
-}
-
-.section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 14rem 2rem;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
-  text-align: center;
-}
-
-.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.home-section h1 {
-  font-size: 3.5rem;
-  font-family: 'Playfair Display', serif;
-}
-
-.profile-section {
-  flex-direction: row;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.profile-pic {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.profile-pic:hover {
-  transform: scale(1.1);
-}
-
-.text {
-  max-width: 500px;
-}
-
-/* Custom Info Box Style */
-.info-box, .edu-box, .exp-box, .about-box, .skills-box {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 2rem;
-  max-width: 800px;
-  width: 90%;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-  text-align: left;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-}
-
-/* ... kode CSS yang ada sebelumnya ... */
-
-/* Custom Info Box Style */
-.info-box p, .edu-box p, .exp-box p, .about-box p, .skills-box p {
-    text-align: justify;
-}
-
-.text p {
-    text-align: justify;
-}
-
-.fade-in-box {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.info-box h2,
-.edu-box h2,
-.exp-box h2,
-.about-box h2,
-.skills-box h2 {
-  color: #ffd369;
-  margin-bottom: 1rem;
-}
-
-.edu-box p::before {
-  content: '\f549';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  margin-right: 0.5rem;
-  color: #ffd369;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-family: 'Playfair Display', serif;
-  color: #ffd369;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.about-box::before {
-    content: "💬";
-    composes: box-icon;
-  }
-  
-  .skills-box::before {
-    content: "🧠";
-    composes: box-icon;
-  }
-  
-  .edu-box::before {
-    content: "🎓";
-    composes: box-icon;
-  }
-  
-  .exp-box::before {
-    content: "🧑‍🏫";
-    composes: box-icon;
-  }
-  .exp-box h3 {
-    font-size: 1.5rem;
-    color: #ffd369;
-    margin-bottom: 0.5rem;
-  }
-
-  .home-section h1 {
-    font-size: 3.5rem;
-    font-family: 'Playfair Display', serif;
-    background: linear-gradient(90deg, #ffd369, #ffffff, #ffd369);
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: shine 5s linear infinite;
-    transition: transform 0.3s ease;
-    display: inline-block;
-  }
-  
-  .home-section h1:hover {
-    transform: scale(1.05);
-  }
-  
-  @keyframes shine {
-    to {
-      background-position: -200% center;
-    }
-  }
-
-  .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    backdrop-filter: blur(4px);
-    transition: background-color 0.3s ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  }
-  /* Basic Navbar Styling */
-
-  
-  .nav-container {
+/* Header & Navigation */
+header {
+    background: white;
+    color: var(--dark-color);
+    padding: 1rem 2rem;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+#nav-menu a {
+    color: var(--dark-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+#nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+.burger-menu {
+    display: none; /* Sembunyikan di desktop */
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* Hero/Home Section */
+.hero {
+    background: linear-gradient(135deg, #e0f7fa, #b3e5fc); /* Gradien warna keren */
+    color: var(--dark-color);
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    z-index: 1001;
-  }
-  
-  .hamburger span {
-    height: 3px;
-    width: 25px;
-    background: white;
-    margin: 4px 0;
-    border-radius: 2px;
-    transition: 0.3s ease;
-  }
-  
-  @media (max-width: 768px) {
-/* Agar menu animasi keluar dengan halus */
-.nav-links {
-    display: none;
-    flex-direction: column;
-    background: #0b0c10;
-    position: absolute;
-    top: 80px;
-    right: 90;
-    width: 30%;
     text-align: center;
-    padding: 1rem 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: transform 1s ease-in-out;
-    transform: translateY(-100%);
-  }
-  
-  .nav-links.show {
-    display: flex;
-    transform: translateY(0);
-  }
-    .hamburger {
-      display: flex;
-    }
-  }
-
-  /* ... kode CSS yang ada di atas ... */
-
-.footer {
-    padding: 4rem 2rem;
-    background-color: #0b0c10;
-    border-top: 1px solid #1f2833;
-    text-align: center;
-    opacity: 1; /* Pastikan footer selalu terlihat */
-    transform: translateY(0); /* Matikan animasi fade-in untuk footer */
+    padding: 4rem 1rem;
 }
 
-.footer h2 {
-    color: #ffd369;
-    font-size: 2.5rem;
+.hero h1 {
+    font-size: 3rem;
     margin-bottom: 1rem;
-    font-family: 'Playfair Display', serif;
 }
 
-.footer p {
-    color: #c5c6c7;
-    margin-bottom: 1.5rem;
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
 }
 
-.contact-info p {
-    margin: 0.5rem 0;
-    color: white;
-    font-size: 1rem;
+.cta-button {
     display: inline-block;
-    margin: 0 1rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s;
 }
 
-.contact-info i {
-    color: #ffd369;
-    margin-right: 0.5rem;
+.cta-button:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
 }
 
-.social-links {
-    margin-top: 2rem;
+/* General Section Styling */
+.container {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.bg-light {
+    background-color: var(--secondary-color);
+}
+
+/* About Section */
+.about-content {
     display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.profile-photo img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%; /* Membuat foto muka bulat */
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bio {
+    flex: 1;
+}
+
+/* Experience Section (Timeline Basic) */
+.timeline-item {
+    border-left: 3px solid var(--primary-color);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+.timeline-item h3 { color: var(--dark-color); margin-bottom: 0.5rem; }
+
+/* Projects Section */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    padding-bottom: 1rem;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-card h3 {
+    margin: 1rem 1rem 0.5rem;
+    color: var(--primary-color);
+}
+
+.project-card p {
+    margin: 0 1rem 1rem;
+    font-size: 0.9rem;
+}
+
+.github-link {
+    display: block;
+    text-align: center;
+    margin: 0 1rem;
+    padding: 0.5rem;
+    background: var(--dark-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.github-link:hover {
+    background: var(--primary-color);
+}
+
+/* Skills Section */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.skill-tag {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.skill-tag:hover {
+    background: #0056b3;
+}
+
+/* Contact Section */
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
+    margin-top: 2rem;
 }
 
-.social-links a {
-    color: #c5c6c7;
-    font-size: 2rem;
-    transition: color 0.3s ease, transform 0.3s ease;
+.contact-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
 }
 
-.social-links a:hover {
-    color: #ffd369;
-    transform: translateY(-5px);
+.contact-item i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    color: var(--primary-color);
 }
 
-  
-  
-  
+.contact-item:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.contact-item:hover i {
+    color: white;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: var(--dark-color);
+    color: white;
+    font-size: 0.9rem;
+}
 
 
+/* --- Responsive Design (Mobile View) --- */
+@media (max-width: 768px) {
+    /* Header & Burger Menu */
+    #nav-menu {
+        display: none; /* Sembunyikan menu navigasi di mobile secara default */
+        flex-direction: column;
+        position: absolute;
+        top: 65px; /* Sesuaikan dengan tinggi header */
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+        z-index: 999;
+    }
 
-  
-  
+    #nav-menu.active {
+        display: flex; /* Tampilkan menu saat aktif */
+    }
 
-  
+    #nav-menu a {
+        padding: 10px 20px;
+        border-bottom: 1px solid #eee;
+    }
 
-      
-  
-  
+    .burger-menu {
+        display: block; /* Tampilkan burger menu di mobile */
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    /* About Section */
+    .about-content {
+        flex-direction: column; /* Tumpuk konten About */
+        text-align: center;
+    }
+    .profile-photo img {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Project Section */
+    .project-grid {
+        grid-template-columns: 1fr; /* Satu kolom untuk mobile */
+    }
+
+    /* Contact Section */
+    .contact-links {
+        flex-direction: column; /* Tumpuk link kontak */
+    }
+    .contact-item {
+        width: 100%;
+        justify-content: center;
+    }
+}
